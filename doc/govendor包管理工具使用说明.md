@@ -23,6 +23,10 @@ govendor -version
 # 移除vendor目录中没有使用的包
 govendor remove +unused # 或者govendor remove +u
 
+# 把指定包添加进vendor目录 vendor目录下已存在会报错，vendor.json存在该包记录不会报错会直接覆盖该记录
+# 有可能存在govendor移除vendor目录没有使用的包之后有的误删除,但是govendor add +e还是无法解决,就只能手动添加指定的包到vendor目录
+govendor add github.com/golang/protobuf/proto
+
 # 查看当前项目依赖包：包括列出项目本身的包和vendor中的外部包
 govendor list
 
